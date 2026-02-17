@@ -3,24 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход в админ панель</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Управление | TG Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logout-btn {
+            padding: 10px 25px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 400px;
+            margin: 50px auto;
+        }
+
+        .login-form h2 {
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #C850C0;
+            box-shadow: 0 0 0 3px rgba(200, 80, 192, 0.2);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-form button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(193, 78, 192, 0.3);
+        }
+
+        .admin-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(193, 78, 192, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #C850C0;
+            box-shadow: 0 0 0 3px rgba(200, 80, 192, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(193, 78, 192, 0.3);
+        }
+
+        .accounts-list {
+            margin-top: 30px;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #C850C0;
+        }
+
+        .admin-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .admin-card-info h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .admin-card-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .delete-btn {
+            padding: 10px 20px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.05);
+            background: #ff3344;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .error-message {
+            background: #ff4757;
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .admin-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .admin-card-info {
+                width: 100%;
+            }
+            
+            .delete-btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo">🔐 Вход для администратора</div>
-        </div>
-
-        <div class="admin-form">
-            <div class="form-group">
-                <label>Пароль:</label>
-                <input type="password" id="adminPassword" placeholder="Введите пароль">
-            </div>
-            <button class="submit-btn" onclick="loginAdmin()">Войти</button>
-        </div>
+        <div id="app"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const ADMIN_PASSWORD = '241512';
+        const STORAGE_KEY = 'tg_market_accounts';
+        
+        // Состояние приложения
+        let isLoggedIn = sessionStorage.getItem('admin_logged') === 'true';
+        
+        // Данные по умолчанию
+        const DEFAULT_ACCOUNTS = [
+            {
+                id: 1,
+                title: 'Telegram Premium 2020',
+                premium: true,
+                spamblock: false,
+                otlega: true,
+                startNumber: '+7 (900)',
+                country: 'Россия',
+                price: '2500₽',
+                contact: '@silicy'
+            },
+            {
+                id: 2,
+                title: 'Telegram USA 2019',
+                premium: false,
+                spamblock: true,
+                otlega: false,
+                startNumber: '+1 (202)',
+                country: 'США',
+                price: '1800₽',
+                contact: '@silicy'
+            }
+        ];
+
+        // Загрузка аккаунтов
+        function getAccounts() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    return JSON.parse(stored);
+                }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_ACCOUNTS));
+                return DEFAULT_ACCOUNTS;
+            } catch (e) {
+                console.error('Ошибка:', e);
+                return DEFAULT_ACCOUNTS;
+            }
+        }
+
+        // Сохранение аккаунтов
+        function saveAccounts(accounts) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts));
+            // Триггерим событие для других вкладок
+            window.dispatchEvent(new Event('storage'));
+        }
+
+        // Вход
+        function login() {
+            const password = document.getElementById('adminPass').value;
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('admin_logged', 'true');
+                isLoggedIn = true;
+                render();
+            } else {
+                alert('Неверный пароль!');
+            }
+        }
+
+        // Выход
+        function logout() {
+            sessionStorage.removeItem('admin_logged');
+            isLoggedIn = false;
+            render();
+        }
+
+        // Добавление аккаунта
+        function addAccount(event) {
+            event.preventDefault();
+            
+            const newAccount = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                premium: document.getElementById('premium').checked,
+                spamblock: document.getElementById('spamblock').checked,
+                otlega: document.getElementById('otlega').checked,
+                startNumber: document.getElementById('startNumber').value,
+                country: document.getElementById('country').value,
+                price: document.getElementById('price').value,
+                contact: '@silicy'
+            };
+            
+            const accounts = getAccounts();
+            accounts.push(newAccount);
+            saveAccounts(accounts);
+            
+            event.target.reset();
+            render(); // Мгновенное обновление
+        }
+
+        // Удаление аккаунта
+        function deleteAccount(id) {
+            if (confirm('Удалить это объявление?')) {
+                const accounts = getAccounts();
+                const filtered = accounts.filter(acc => acc.id !== id);
+                saveAccounts(filtered);
+                render(); // Мгновенное обновление
+            }
+        }
+
+        // Рендер интерфейса
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (!isLoggedIn) {
+                // Форма входа
+                app.innerHTML = `
+                    <div class="login-form">
+                        <h2>🔐 Вход в админку</h2>
+                        <input type="password" id="adminPass" placeholder="Введите пароль" autofocus>
+                        <button onclick="login()">Войти</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const accounts = getAccounts();
+            
+            // Панель управления
+            app.innerHTML = `
+                <div class="header">
+                    <div class="logo">⚡ Панель управления</div>
+                    <button class="logout-btn" onclick="logout()">Выйти</button>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3 class="section-title">➕ Добавить аккаунт</h3>
+                    <form onsubmit="addAccount(event)">
+                        <div class="form-group">
+                            <label>Название аккаунта</label>
+                            <input type="text" id="title" required placeholder="Telegram Premium 2024">
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="premium">
+                            <label>Премиум</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="spamblock">
+                            <label>Спамблок</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="otlega">
+                            <label>Отлега</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Начало номера</label>
+                            <input type="text" id="startNumber" required placeholder="+7 (900)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Страна</label>
+                            <select id="country" required>
+                                <option value="Россия">Россия</option>
+                                <option value="Украина">Украина</option>
+                                <option value="США">США</option>
+                                <option value="Германия">Германия</option>
+                                <option value="Другая">Другая</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Цена</label>
+                            <input type="text" id="price" required placeholder="2500₽">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">➕ Добавить аккаунт</button>
+                    </form>
+                    
+                    <div class="accounts-list">
+                        <h3 class="section-title">📋 Текущие объявления (${accounts.length})</h3>
+                        ${accounts.length === 0 ? 
+                            '<div class="admin-card">Нет объявлений</div>' : 
+                            accounts.map(acc => `
+                                <div class="admin-card">
+                                    <div class="admin-card-info">
+                                        <h4>${acc.title}</h4>
+                                        <p>${acc.country} | ${acc.price} | ${acc.premium ? 'Premium' : 'Обычный'}</p>
+                                    </div>
+                                    <button class="delete-btn" onclick="deleteAccount(${acc.id})">Удалить</button>
+                                </div>
+                            `).join('')
+                        }
+                    </div>
+                </div>
+            `;
+        }
+
+        // Слушаем изменения в других вкладках
+        window.addEventListener('storage', function(e) {
+            if (e.key === STORAGE_KEY && isLoggedIn) {
+                render();
+            }
+        });
+
+        // Начальный рендер
+        document.addEventListener('DOMContentLoaded', render);
+    </script>
 </body>
 </html>
