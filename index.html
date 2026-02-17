@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>TG Market | Купить аккаунты Telegram</title>
+    <title>TG MARKET | НЕОН</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            background: #000000;
             min-height: 100vh;
             padding: 15px;
             position: relative;
         }
 
+        /* Неоновый эффект фона */
         body::before {
             content: '';
             position: fixed;
@@ -26,8 +27,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="white" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="white"/></svg>');
-            background-size: 50px 50px;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
             pointer-events: none;
             z-index: 0;
         }
@@ -39,37 +42,38 @@
             z-index: 1;
         }
 
-        /* Шапка как на фото */
+        /* Шапка в неон-стиле */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #0a0a0a;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3),
+                        inset 0 0 10px rgba(255,255,255,0.1);
             border-radius: 30px;
             padding: 20px 25px;
             margin-bottom: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .logo {
             font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff,
+                         0 0 20px #ffffff;
+            letter-spacing: 2px;
         }
 
         .stats {
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            color: white;
+            background: #ffffff;
+            color: #000000;
             padding: 8px 20px;
             border-radius: 25px;
-            font-weight: 600;
+            font-weight: 800;
             font-size: 14px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 0 20px #ffffff;
+            border: 2px solid #ffffff;
         }
 
         /* Сетка аккаунтов */
@@ -80,15 +84,15 @@
             margin-top: 20px;
         }
 
-        /* Карточка аккаунта */
+        /* Карточка в неон-стиле */
         .account-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #0a0a0a;
+            border: 2px solid #ffffff;
             border-radius: 30px;
             padding: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3),
+                        inset 0 0 10px rgba(255,255,255,0.1);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.5);
             position: relative;
             overflow: hidden;
         }
@@ -99,22 +103,26 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #4158D0, #C850C0, #FFCC70);
+            height: 3px;
+            background: #ffffff;
+            box-shadow: 0 0 20px #ffffff;
         }
 
         .account-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px #ffffff,
+                        inset 0 0 15px rgba(255,255,255,0.2);
+            border-color: #ffffff;
         }
 
         .account-title {
             font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
+            font-weight: 800;
+            color: #ffffff;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(193, 78, 192, 0.2);
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            text-shadow: 0 0 5px #ffffff;
         }
 
         .account-info {
@@ -127,149 +135,146 @@
             align-items: center;
             margin: 12px 0;
             padding: 8px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
         }
 
         .info-label {
-            color: #666;
+            color: #888;
             font-weight: 500;
             font-size: 14px;
         }
 
         .info-value {
             font-weight: 700;
-            color: #333;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ffffff;
         }
 
-        /* Бейджи */
+        /* Бейджи в неон-стиле */
         .badge {
             display: inline-block;
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border: 2px solid #ffffff;
         }
 
         .badge.premium-yes {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 20px #ffffff;
         }
 
         .badge.premium-no {
-            background: #e0e0e0;
-            color: #666;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
         }
 
         .badge.spamblock-yes {
-            background: #ff4757;
-            color: white;
-            box-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 20px #ffffff;
         }
 
         .badge.spamblock-no {
-            background: #20bf6b;
-            color: white;
-            box-shadow: 0 2px 10px rgba(32, 191, 107, 0.3);
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
         }
 
         .badge.otlega-yes {
-            background: #4834d4;
-            color: white;
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 20px #ffffff;
         }
 
         .badge.otlega-no {
-            background: #a4b0be;
-            color: white;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
         }
 
         .price-tag {
             font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff,
+                         0 0 20px #ffffff;
             margin: 15px 0;
         }
 
-        /* Кнопка покупки */
+        /* Кнопка покупки в неон-стиле */
         .buy-button {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            color: white;
-            border: none;
+            background: transparent;
+            color: #ffffff;
+            border: 3px solid #ffffff;
             border-radius: 20px;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(193, 78, 192, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .buy-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .buy-button:hover::before {
-            left: 100%;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .buy-button:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 30px #ffffff;
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(193, 78, 192, 0.4);
         }
 
         /* Админ панель внизу */
         .admin-footer {
             margin-top: 50px;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: #0a0a0a;
+            border: 2px solid #ffffff;
             border-radius: 30px;
             text-align: center;
-            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
 
         .admin-button {
             padding: 18px 45px;
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            border: none;
-            color: white;
+            background: transparent;
+            border: 3px solid #ffffff;
+            color: #ffffff;
             border-radius: 50px;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .admin-button:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 30px #ffffff;
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         /* Пустое состояние */
         .empty-state {
-            background: rgba(255,255,255,0.95);
+            background: #0a0a0a;
+            border: 2px solid #ffffff;
             border-radius: 30px;
             padding: 50px;
             text-align: center;
+            color: #ffffff;
             font-size: 18px;
-            color: #666;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
 
         @media (max-width: 768px) {
@@ -292,97 +297,98 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">📱 TG MARKET</div>
-            <div class="stats" id="accountCount">0 аккаунтов</div>
+            <div class="logo">⚡ НЕОН MARKET</div>
+            <div class="stats" id="accountCount">0</div>
         </div>
 
         <div id="accountsGrid" class="accounts-grid">
-            <div class="empty-state">Загрузка аккаунтов...</div>
+            <div class="empty-state">ЗАГРУЗКА...</div>
         </div>
 
         <div class="admin-footer">
             <button class="admin-button" onclick="window.location.href='admin.html'">
-                🔐 ПАНЕЛЬ УПРАВЛЕНИЯ
+                ▣ ПАНЕЛЬ
             </button>
         </div>
     </div>
 
     <script>
-        // Ключ для хранения данных
-        const STORAGE_KEY = 'tg_market_accounts';
+        // Ключ для хранения
+        const STORAGE_KEY = 'tg_market_neon';
         
-        // Данные по умолчанию
-        const DEFAULT_ACCOUNTS = [
-            {
-                id: 1,
-                title: 'Telegram Premium 2020',
-                premium: true,
-                spamblock: false,
-                otlega: true,
-                startNumber: '+7 (900)',
-                country: 'Россия',
-                price: '2500₽',
-                contact: '@silicy'
-            },
-            {
-                id: 2,
-                title: 'Telegram USA 2019',
-                premium: false,
-                spamblock: true,
-                otlega: false,
-                startNumber: '+1 (202)',
-                country: 'США',
-                price: '1800₽',
-                contact: '@silicy'
-            }
-        ];
+        // Стартовые данные (только если нет сохраненных)
+        function getInitialAccounts() {
+            return [
+                {
+                    id: 1,
+                    title: 'PREMIUM 2020',
+                    premium: true,
+                    spamblock: false,
+                    otlega: true,
+                    startNumber: '+7 (900)',
+                    country: 'РФ',
+                    price: '2500₽',
+                    contact: '@silicy'
+                },
+                {
+                    id: 2,
+                    title: 'USA ACCOUNT',
+                    premium: false,
+                    spamblock: true,
+                    otlega: false,
+                    startNumber: '+1 (202)',
+                    country: 'USA',
+                    price: '1800₽',
+                    contact: '@silicy'
+                }
+            ];
+        }
 
-        // Загрузка аккаунтов
+        // Получение аккаунтов
         function getAccounts() {
             try {
                 const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     return JSON.parse(stored);
                 }
-                // Если нет данных, сохраняем дефолтные
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_ACCOUNTS));
-                return DEFAULT_ACCOUNTS;
+                // Если нет сохраненных, используем начальные
+                const initial = getInitialAccounts();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+                return initial;
             } catch (e) {
-                console.error('Ошибка загрузки:', e);
-                return DEFAULT_ACCOUNTS;
+                console.error('Ошибка:', e);
+                return getInitialAccounts();
             }
         }
 
-        // Отображение аккаунтов
+        // Отображение
         function renderAccounts() {
             const grid = document.getElementById('accountsGrid');
             const countEl = document.getElementById('accountCount');
             
             try {
                 const accounts = getAccounts();
-                
-                // Обновляем счетчик
-                countEl.textContent = `${accounts.length} аккаунтов`;
+                countEl.textContent = accounts.length;
                 
                 if (!accounts || accounts.length === 0) {
-                    grid.innerHTML = '<div class="empty-state">✨ Нет доступных аккаунтов</div>';
+                    grid.innerHTML = '<div class="empty-state">◈ НЕТ АККАУНТОВ ◈</div>';
                     return;
                 }
                 
                 grid.innerHTML = accounts.map(acc => `
                     <div class="account-card">
-                        <div class="account-title">${acc.title || 'Аккаунт Telegram'}</div>
+                        <div class="account-title">◈ ${acc.title} ◈</div>
                         <div class="account-info">
                             <div class="info-row">
-                                <span class="info-label">Премиум</span>
+                                <span class="info-label">PREMIUM</span>
                                 <span class="info-value">
                                     <span class="badge ${acc.premium ? 'premium-yes' : 'premium-no'}">
-                                        ${acc.premium ? 'ПРЕМИУМ' : 'НЕТ'}
+                                        ${acc.premium ? 'ДА' : 'НЕТ'}
                                     </span>
                                 </span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">Спамблок</span>
+                                <span class="info-label">СПАМБЛОК</span>
                                 <span class="info-value">
                                     <span class="badge ${acc.spamblock ? 'spamblock-yes' : 'spamblock-no'}">
                                         ${acc.spamblock ? '⚠️ ЕСТЬ' : '✅ НЕТ'}
@@ -390,35 +396,35 @@
                                 </span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">Отлега</span>
+                                <span class="info-label">ОТЛЕГА</span>
                                 <span class="info-value">
                                     <span class="badge ${acc.otlega ? 'otlega-yes' : 'otlega-no'}">
-                                        ${acc.otlega ? '✅ ЕСТЬ' : '❌ НЕТ'}
+                                        ${acc.otlega ? 'ДА' : 'НЕТ'}
                                     </span>
                                 </span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">Начало номера</span>
-                                <span class="info-value">${acc.startNumber || 'Не указан'}</span>
+                                <span class="info-label">НОМЕР</span>
+                                <span class="info-value">${acc.startNumber || '---'}</span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">Страна</span>
-                                <span class="info-value">${acc.country || 'Не указана'}</span>
+                                <span class="info-label">СТРАНА</span>
+                                <span class="info-value">${acc.country || '---'}</span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">Цена</span>
-                                <span class="price-tag">${acc.price || 'Договорная'}</span>
+                                <span class="info-label">ЦЕНА</span>
+                                <span class="price-tag">${acc.price || '---'}</span>
                             </div>
                         </div>
                         <button class="buy-button" onclick="buyAccount('${acc.contact || '@silicy'}')">
-                            КУПИТЬ ЧЕРЕЗ ТЕЛЕГРАМ
+                            ▣ КУПИТЬ
                         </button>
                     </div>
                 `).join('');
                 
             } catch (e) {
                 console.error('Ошибка рендера:', e);
-                grid.innerHTML = '<div class="empty-state">Ошибка загрузки данных</div>';
+                grid.innerHTML = '<div class="empty-state">✖ ОШИБКА ✖</div>';
             }
         }
 
@@ -428,18 +434,20 @@
             window.open(`https://t.me/${tg}`, '_blank');
         };
 
-        // Слушаем изменения в других вкладках
+        // Слушаем изменения
         window.addEventListener('storage', function(e) {
             if (e.key === STORAGE_KEY) {
                 renderAccounts();
             }
         });
 
-        // Загружаем при старте
+        // Принудительное обновление каждую секунду
+        setInterval(() => {
+            renderAccounts();
+        }, 1000);
+
+        // Старт
         document.addEventListener('DOMContentLoaded', renderAccounts);
-        
-        // Периодическая проверка обновлений
-        setInterval(renderAccounts, 1000);
     </script>
 </body>
 </html>
