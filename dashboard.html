@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление объявлениями</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">⚙️ Панель управления</div>
+            <button class="admin-button" onclick="logoutAdmin()">Выйти</button>
+        </div>
+
+        <!-- Форма добавления аккаунта -->
+        <div class="admin-form" style="margin-bottom: 30px;">
+            <h2 style="margin-bottom: 20px;">➕ Добавить аккаунт</h2>
+            <form id="addAccountForm">
+                <div class="form-group">
+                    <label>Название аккаунта:</label>
+                    <input type="text" id="title" required placeholder="Telegram Premium 2024">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="premium">
+                    <label>Премиум</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="spamblock">
+                    <label>Спамблок</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="otlega">
+                    <label>Отлега</label>
+                </div>
+
+                <div class="form-group">
+                    <label>Начало номера:</label>
+                    <input type="text" id="startNumber" required placeholder="+7 (900)">
+                </div>
+
+                <div class="form-group">
+                    <label>Страна:</label>
+                    <select id="country" required>
+                        <option value="Россия">Россия</option>
+                        <option value="Украина">Украина</option>
+                        <option value="США">США</option>
+                        <option value="Германия">Германия</option>
+                        <option value="Другая">Другая</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Цена:</label>
+                    <input type="text" id="price" required placeholder="2500₽">
+                </div>
+
+                <button type="submit" class="submit-btn">Добавить аккаунт</button>
+            </form>
+        </div>
+
+        <!-- Список существующих аккаунтов -->
+        <div class="accounts-list">
+            <h2 style="color: white; margin-bottom: 20px;">📋 Текущие объявления</h2>
+            <div id="adminAccountsList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
