@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEON | PANEL</title>
+    <title>silmrkt | admin</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
 
         body {
@@ -18,260 +18,254 @@
             padding: 20px;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 30%),
-                repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
+        /* Шапка */
         .header {
-            background: #0a0a0a;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-            border-radius: 30px;
+            background: #111111;
+            border: 1px solid #333333;
             padding: 20px 25px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 900;
+            font-size: 18px;
+            font-weight: 400;
             color: #ffffff;
-            text-shadow: 0 0 10px #ffffff;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .logout-btn {
-            padding: 10px 25px;
             background: transparent;
+            border: 1px solid #333333;
             color: #ffffff;
-            border: 3px solid #ffffff;
-            border-radius: 20px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 8px 20px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .logout-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px #ffffff;
+            border-color: #666666;
         }
 
+        /* Форма входа */
         .login-form {
-            background: #0a0a0a;
-            border: 2px solid #ffffff;
-            border-radius: 30px;
+            background: #111111;
+            border: 1px solid #333333;
             padding: 40px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
             max-width: 400px;
-            margin: 50px auto;
+            margin: 100px auto;
         }
 
         .login-form h2 {
-            margin-bottom: 30px;
             color: #ffffff;
-            text-align: center;
-            text-shadow: 0 0 5px #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .login-form input {
             width: 100%;
-            padding: 15px 20px;
             background: #000000;
-            border: 2px solid #ffffff;
-            border-radius: 20px;
-            font-size: 16px;
+            border: 1px solid #333333;
+            padding: 15px;
             margin-bottom: 20px;
             color: #ffffff;
-            transition: all 0.3s ease;
+            font-size: 14px;
         }
 
         .login-form input:focus {
             outline: none;
-            box-shadow: 0 0 20px #ffffff;
+            border-color: #666666;
         }
 
         .login-form button {
             width: 100%;
-            padding: 15px;
             background: transparent;
+            border: 1px solid #333333;
             color: #ffffff;
-            border: 3px solid #ffffff;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 800;
+            padding: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+        }
+
+        .login-form button:hover {
+            border-color: #ffffff;
+        }
+
+        /* Панель админа */
+        .admin-panel {
+            background: #111111;
+            border: 1px solid #333333;
+            padding: 30px;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333333;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .login-form button:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px #ffffff;
-        }
-
-        .admin-panel {
-            background: #0a0a0a;
-            border: 2px solid #ffffff;
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-
-        .section-title {
-            font-size: 22px;
-            color: #ffffff;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #ffffff;
-            text-shadow: 0 0 5px #ffffff;
-        }
-
+        /* Форма */
         .form-group {
             margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
+            color: #666666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #ffffff;
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
             background: #000000;
-            border: 2px solid #ffffff;
-            border-radius: 15px;
-            font-size: 15px;
+            border: 1px solid #333333;
+            padding: 12px 15px;
             color: #ffffff;
-            transition: all 0.3s ease;
+            font-size: 14px;
+            font-family: inherit;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            box-shadow: 0 0 15px #ffffff;
+            border-color: #666666;
         }
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
-            padding: 10px 0;
-            color: #ffffff;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #ffffff;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 16px;
             background: transparent;
+            border: 1px solid #333333;
             color: #ffffff;
-            border: 3px solid #ffffff;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+            padding: 15px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 20px;
         }
 
         .submit-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px #ffffff;
+            border-color: #ffffff;
         }
 
+        /* Список аккаунтов */
         .accounts-list {
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .admin-card {
             background: #000000;
-            border: 2px solid #ffffff;
-            border-radius: 20px;
+            border: 1px solid #333333;
             padding: 20px;
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
+            transition: border-color 0.2s ease;
         }
 
         .admin-card:hover {
-            box-shadow: 0 0 25px #ffffff;
-            transform: translateX(5px);
+            border-color: #666666;
         }
 
         .admin-card-info h4 {
             color: #ffffff;
-            margin-bottom: 5px;
-            text-shadow: 0 0 5px #ffffff;
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 8px;
         }
 
         .admin-card-info p {
-            color: #888;
-            font-size: 14px;
+            color: #666666;
+            font-size: 13px;
         }
 
         .delete-btn {
-            padding: 10px 20px;
             background: transparent;
+            border: 1px solid #333333;
             color: #ffffff;
-            border: 2px solid #ffffff;
-            border-radius: 15px;
-            font-weight: 700;
+            padding: 8px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .delete-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px #ffffff;
+            border-color: #ff4444;
+            color: #ff4444;
         }
 
-        select option {
-            background: #000000;
+        /* Сообщения */
+        .message {
+            background: #111111;
+            border: 1px solid #333333;
+            padding: 15px;
+            margin-bottom: 20px;
             color: #ffffff;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .message.error {
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+
+        /* Подсказки */
+        .hint {
+            color: #666666;
+            font-size: 11px;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
         }
 
         @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
             .admin-card {
                 flex-direction: column;
                 text-align: center;
@@ -291,65 +285,132 @@
 
     <script>
         const ADMIN_PASSWORD = '241512';
-        const STORAGE_KEY = 'tg_market_neon';
-        
+        const BIN_ID = '67b5d1f1acd3cb34a8f5d2c4';
+        const API_KEY = '$2a$10$XkL5Y7Z8q9w2e3r4t5y6u7i8o9p0q1r2s3t4u5v6w7x8y9z0a1b2c3d4e5f6g7h8';
+
+        // Расширенный список стран
+        const COUNTRIES = [
+            'Россия', 'Украина', 'Беларусь', 'Казахстан',
+            'США', 'Канада', 'Великобритания', 'Германия',
+            'Франция', 'Италия', 'Испания', 'Нидерланды',
+            'Польша', 'Чехия', 'Китай', 'Индия',
+            'Турция', 'ОАЭ', 'Израиль', 'Бразилия'
+        ];
+
         let isLoggedIn = sessionStorage.getItem('admin_logged') === 'true';
-        
-        // Начальные данные
-        function getInitialAccounts() {
-            return [
-                {
-                    id: 1,
-                    title: 'PREMIUM 2020',
-                    premium: true,
-                    spamblock: false,
-                    otlega: true,
-                    startNumber: '+7 (900)',
-                    country: 'РФ',
-                    price: '2500₽',
-                    contact: '@silicy'
-                },
-                {
-                    id: 2,
-                    title: 'USA ACCOUNT',
-                    premium: false,
-                    spamblock: true,
-                    otlega: false,
-                    startNumber: '+1 (202)',
-                    country: 'USA',
-                    price: '1800₽',
-                    contact: '@silicy'
-                }
-            ];
+
+        const DEFAULT_ACCOUNTS = [
+            {
+                id: 1,
+                title: 'PREMIUM 2020',
+                premium: 'Premium',
+                spamblock: 'Нет спамблока',
+                otlega: '3 дня',
+                startNumber: '+7 (900) 123-45-67',
+                country: 'Россия',
+                price: '2500',
+                contact: '@silicy'
+            },
+            {
+                id: 2,
+                title: 'STANDARD USA',
+                premium: 'Нет премиум',
+                spamblock: 'Есть спамблок',
+                otlega: '7 дней',
+                startNumber: '+1 (202) 555-0123',
+                country: 'США',
+                price: '1800',
+                contact: '@silicy'
+            }
+        ];
+
+        let messageTimeout;
+
+        function showMessage(text, isError = false) {
+            const app = document.getElementById('app');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isError ? 'error' : ''}`;
+            msgDiv.textContent = text;
+            
+            const oldMsg = document.querySelector('.message');
+            if (oldMsg) oldMsg.remove();
+            
+            app.insertBefore(msgDiv, app.firstChild);
+            
+            if (messageTimeout) clearTimeout(messageTimeout);
+            messageTimeout = setTimeout(() => {
+                const msg = document.querySelector('.message');
+                if (msg) msg.remove();
+            }, 3000);
         }
 
-        // Получение аккаунтов
-        function getAccounts() {
+        // Валидация полей
+        function validateField(name, value) {
+            switch(name) {
+                case 'title':
+                    if (value.length < 3) return 'минимум 3 символа';
+                    if (value.length > 50) return 'максимум 50 символов';
+                    break;
+                case 'startNumber':
+                    // Номер телефона: только цифры, +, пробелы, скобки, дефисы
+                    if (!/^[\d\s\+\-\(\)]{5,30}$/.test(value)) {
+                        return 'некорректный номер';
+                    }
+                    break;
+                case 'price':
+                    // Цена: только цифры
+                    if (!/^\d+$/.test(value)) {
+                        return 'только цифры';
+                    }
+                    if (parseInt(value) < 1) return 'минимальная цена 1';
+                    if (parseInt(value) > 1000000) return 'максимум 1,000,000';
+                    break;
+                case 'otlega':
+                    if (value.length < 2) return 'минимум 2 символа';
+                    if (value.length > 30) return 'максимум 30 символов';
+                    break;
+                case 'premium':
+                case 'spamblock':
+                    if (value.length < 2) return 'минимум 2 символа';
+                    if (value.length > 50) return 'максимум 50 символов';
+                    break;
+            }
+            return null;
+        }
+
+        async function loadAccounts() {
             try {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored && stored !== 'null' && stored !== 'undefined') {
-                    return JSON.parse(stored);
-                }
-                // Важно: всегда сохраняем начальные данные, если ничего нет
-                const initial = getInitialAccounts();
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
-                return initial;
-            } catch (e) {
-                console.error('Ошибка:', e);
-                return getInitialAccounts();
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+                    headers: { 'X-Master-Key': API_KEY }
+                });
+                
+                if (!response.ok) throw new Error();
+                const data = await response.json();
+                return data.record.accounts || DEFAULT_ACCOUNTS;
+            } catch {
+                return DEFAULT_ACCOUNTS;
             }
         }
 
-        // Сохранение
-        function saveAccounts(accounts) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts));
-            // Триггерим событие
-            window.dispatchEvent(new Event('storage'));
-            // Дополнительно отправляем кастомное событие
-            window.dispatchEvent(new CustomEvent('accountsUpdated'));
+        async function saveAccounts(accounts) {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': API_KEY
+                    },
+                    body: JSON.stringify({ accounts: accounts })
+                });
+                
+                if (response.ok) {
+                    showMessage('сохранено');
+                }
+            } catch {
+                showMessage('ошибка сохранения', true);
+            }
         }
 
-        // Вход
         function login() {
             const password = document.getElementById('adminPass').value;
             if (password === ADMIN_PASSWORD) {
@@ -357,131 +418,151 @@
                 isLoggedIn = true;
                 render();
             } else {
-                alert('НЕВЕРНЫЙ ПАРОЛЬ');
+                showMessage('неверный пароль', true);
             }
         }
 
-        // Выход
         function logout() {
             sessionStorage.removeItem('admin_logged');
             isLoggedIn = false;
             render();
         }
 
-        // Добавление
-        function addAccount(event) {
+        async function addAccount(event) {
             event.preventDefault();
             
+            // Собираем данные
+            const formData = {
+                title: document.getElementById('title').value.trim(),
+                premium: document.getElementById('premium').value.trim(),
+                spamblock: document.getElementById('spamblock').value.trim(),
+                otlega: document.getElementById('otlega').value.trim(),
+                startNumber: document.getElementById('startNumber').value.trim(),
+                country: document.getElementById('country').value,
+                price: document.getElementById('price').value.trim()
+            };
+
+            // Валидация
+            for (let [field, value] of Object.entries(formData)) {
+                if (!value) {
+                    showMessage(`заполните поле`, true);
+                    return;
+                }
+                
+                const error = validateField(field, value);
+                if (error) {
+                    showMessage(`${field}: ${error}`, true);
+                    return;
+                }
+            }
+
             const newAccount = {
                 id: Date.now(),
-                title: document.getElementById('title').value,
-                premium: document.getElementById('premium').checked,
-                spamblock: document.getElementById('spamblock').checked,
-                otlega: document.getElementById('otlega').checked,
-                startNumber: document.getElementById('startNumber').value,
-                country: document.getElementById('country').value,
-                price: document.getElementById('price').value,
+                ...formData,
                 contact: '@silicy'
             };
             
-            const accounts = getAccounts();
+            const accounts = await loadAccounts();
             accounts.push(newAccount);
-            saveAccounts(accounts);
+            await saveAccounts(accounts);
             
             event.target.reset();
             render();
         }
 
-        // Удаление
-        function deleteAccount(id) {
-            if (confirm('УДАЛИТЬ?')) {
-                const accounts = getAccounts();
+        async function deleteAccount(id) {
+            if (confirm('удалить?')) {
+                const accounts = await loadAccounts();
                 const filtered = accounts.filter(acc => acc.id !== id);
-                saveAccounts(filtered);
+                await saveAccounts(filtered);
                 render();
             }
         }
 
-        // Рендер
-        function render() {
+        async function render() {
             const app = document.getElementById('app');
             
             if (!isLoggedIn) {
                 app.innerHTML = `
                     <div class="login-form">
-                        <h2>◈ ВХОД ◈</h2>
-                        <input type="password" id="adminPass" placeholder="ПАРОЛЬ" autofocus>
-                        <button onclick="login()">ВОЙТИ</button>
+                        <h2>вход</h2>
+                        <input type="password" id="adminPass" placeholder="пароль" autofocus>
+                        <button onclick="login()">войти</button>
                     </div>
                 `;
                 return;
             }
             
-            const accounts = getAccounts();
+            const accounts = await loadAccounts();
             
             app.innerHTML = `
                 <div class="header">
-                    <div class="logo">⚡ ПУЛЬТ</div>
-                    <button class="logout-btn" onclick="logout()">ВЫЙТИ</button>
+                    <div class="logo">silmrkt admin</div>
+                    <button class="logout-btn" onclick="logout()">выход</button>
                 </div>
                 
                 <div class="admin-panel">
-                    <h3 class="section-title">+ ДОБАВИТЬ</h3>
+                    <h3 class="section-title">+ новый аккаунт</h3>
                     <form onsubmit="addAccount(event)">
                         <div class="form-group">
-                            <label>НАЗВАНИЕ</label>
+                            <label>название</label>
                             <input type="text" id="title" required placeholder="PREMIUM 2024">
+                            <div class="hint">от 3 до 50 символов</div>
                         </div>
                         
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="premium">
-                            <label>PREMIUM</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="spamblock">
-                            <label>СПАМБЛОК</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="otlega">
-                            <label>ОТЛЕГА</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>НОМЕР</label>
-                            <input type="text" id="startNumber" required placeholder="+7 (900)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>премиум</label>
+                                <input type="text" id="premium" required placeholder="Premium / Нет премиум">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>спамблок</label>
+                                <input type="text" id="spamblock" required placeholder="Есть спамблок / Нет спамблока">
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label>СТРАНА</label>
-                            <select id="country" required>
-                                <option value="РФ">РФ</option>
-                                <option value="USA">USA</option>
-                                <option value="EU">EU</option>
-                                <option value="OTHER">OTHER</option>
-                            </select>
+                            <label>отлега</label>
+                            <input type="text" id="otlega" required placeholder="3 дня / 7 дней / ...">
+                            <div class="hint">текст, например: "3 дня", "неделя"</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>ЦЕНА</label>
-                            <input type="text" id="price" required placeholder="2500₽">
+                            <label>номер</label>
+                            <input type="text" id="startNumber" required placeholder="+7 (900) 123-45-67">
+                            <div class="hint">только цифры, +, пробелы, скобки, дефисы</div>
                         </div>
                         
-                        <button type="submit" class="submit-btn">+ ДОБАВИТЬ</button>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>страна</label>
+                                <select id="country" required>
+                                    ${COUNTRIES.map(c => `<option value="${c}">${c}</option>`).join('')}
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>цена</label>
+                                <input type="text" id="price" required placeholder="2500">
+                                <div class="hint">только цифры</div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">+ добавить</button>
                     </form>
                     
                     <div class="accounts-list">
-                        <h3 class="section-title">◈ ВСЕГО: ${accounts.length}</h3>
+                        <h3 class="section-title">всего: ${accounts.length}</h3>
                         ${accounts.length === 0 ? 
-                            '<div class="admin-card">ПУСТО</div>' : 
+                            '<div class="admin-card">нет аккаунтов</div>' : 
                             accounts.map(acc => `
                                 <div class="admin-card">
                                     <div class="admin-card-info">
                                         <h4>${acc.title}</h4>
-                                        <p>${acc.country} | ${acc.price}</p>
+                                        <p>${acc.country} | ${acc.price} ₽</p>
                                     </div>
-                                    <button class="delete-btn" onclick="deleteAccount(${acc.id})">✖</button>
+                                    <button class="delete-btn" onclick="deleteAccount(${acc.id})">✕</button>
                                 </div>
                             `).join('')
                         }
@@ -490,21 +571,6 @@
             `;
         }
 
-        // Слушаем изменения в других вкладках
-        window.addEventListener('storage', function(e) {
-            if (e.key === STORAGE_KEY && isLoggedIn) {
-                render();
-            }
-        });
-
-        // Слушаем кастомное событие
-        window.addEventListener('accountsUpdated', function() {
-            if (isLoggedIn) {
-                render();
-            }
-        });
-
-        // Старт
         document.addEventListener('DOMContentLoaded', render);
     </script>
 </body>
